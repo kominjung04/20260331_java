@@ -37,6 +37,19 @@ public class J01VariableDeclare {
   }
 }
 
+
+// 변수 명명 규칙(Naming Convention)
+// 대소문자가 구분되며 길이에 제한 없다.
+// 예약어 사용 안됨.
+// 숫자로 시작 안됨
+// 특수문자는 ‘_’ 와 ‘$’ 만 사용가능
+// 클래스 항상 대문자로 시작, 변수와 메서드는 항상 영문소문자로 시작
+// Pascal Expression 파스칼 표기법 사용
+// 상수의 이름은 대문자. 단어 사이는 ‘_’
+
+//선언 = 실제 값으로 초기화 :: 할당
+
+
 class Student {
   void eatApple(Apple apple){
     System.out.println(apple + "먹다");
