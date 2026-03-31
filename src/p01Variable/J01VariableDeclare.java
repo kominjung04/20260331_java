@@ -33,7 +33,7 @@ public class J01VariableDeclare {
     s1.eatApple(a1);
 
     //선언 = 초기화 :: 할당
-    //int a = 10;
+    int a = 10;
   }
 }
 
@@ -57,3 +57,4 @@ class Apple {
 //alt + shift + f10 : run
 //ctrl + / : 주석
 //ctrl + d : 줄복사
+//shift + f6 :파일명 바꾸기
