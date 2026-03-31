@@ -46,7 +46,7 @@ class Student {
 class Apple {
   @Override
   public String toString() {
-    return "사과";
+    return "apple";
   }
 }
 
