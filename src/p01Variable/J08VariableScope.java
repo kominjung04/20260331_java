@@ -1,6 +1,6 @@
 package p01Variable;
 
-public class J09VariableScope {
+public class J08VariableScope {
   // 전역 변수(Global Variable)
   //instance Variagle :: 멤버 변수, 전역변수, 인스턴스 별로 각각의 값을 가짐
   int instVar =10;

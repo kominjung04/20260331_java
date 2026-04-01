@@ -2,7 +2,7 @@ package p01Variable;
 
 import java.util.Scanner;
 
-public class J08final {
+public class J09final {
   public static void main(String[] args) {
     final float PI = 3.141592f;
     //PI = 3.14; 상수는 재없뎃 불가
