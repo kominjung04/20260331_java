@@ -32,6 +32,11 @@ public class J09VariableScope {
   void statMethod2(){}
 
   public static void main(String[] args) {
-
+  int localInsVar = 30;
+  //static int localStatVar = 40;
+  statMethod();
   }
+
+  //Java는 callByValue 방식을 사용: 실제값, 참조형 변수도 주소를 값으로 이동
+
 }
