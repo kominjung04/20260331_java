@@ -55,12 +55,14 @@ public class J01ArrayDeclare {
       }
       System.out.println();
     }
+
     for (int i = 0; i < arrs.length; i++) {
       for (int j = 0; j < arrs.length; j++) {
         System.out.print(arrs[i][j]);
       }
       System.out.println();
     }
+
   }
 }
 // 출력해보기
