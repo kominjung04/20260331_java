@@ -45,26 +45,31 @@ public class J01ArrayDeclare {
     }
     System.out.println(sum);
 
+    System.out.println("4*4");
     int[][] arrs = new int [4][4];
     for (int i = 0; i < arr2d.length; i++) {
       for (int j = 0; j < arr2d[i].length; j++) {
         arrs[i][j] = arr2d[i][j];
         arrs[i][arr2d[i].length]+=arr2d[i][j];
-        arrs[i][arr2d[i].length]+=arr2d[i][j];
-        System.out.print(arrs[i][j]);
+        arrs[arr2d.length][j] += arr2d[i][j];
+        arrs[arr2d.length][arr2d[i].length] += arr2d[i][j];
+        //System.out.printf("%3d", arrs[i][j]);
+      }
+      //System.out.println();
+    }
+    for (int i = 0; i < arrs.length; i++) {
+      for (int j = 0; j < arrs[i].length; j++) {
+        System.out.printf("%3d",arrs[i][j]);
       }
       System.out.println();
     }
 
-    for (int i = 0; i < arrs.length; i++) {
-      for (int j = 0; j < arrs.length; j++) {
-        System.out.print(arrs[i][j]);
-      }
-      System.out.println();
-    }
+
+
 
   }
 }
+
 // 출력해보기
 // 1  2  3  9
 // 4  5  6  15
