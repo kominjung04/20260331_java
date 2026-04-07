@@ -1,6 +1,6 @@
 package p04Class;
 
-public class J02ClassExtends {
+public class J02classExtends {
   public static void main(String[] args) {
 
     Marine marine1 = new Marine();
