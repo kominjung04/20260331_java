@@ -61,7 +61,7 @@ class MyFrame extends JFrame {
 
       }
     }
-    btn.addActionListener(new BtnListener());
+    btn.addActionListener(new BtnListener()); //형변환(익명객체 -> 인터페이스)
     btn.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
