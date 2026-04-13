@@ -8,10 +8,10 @@ public class AnimalEx {
   Cat cat = new Cat("고양이",7);
     System.out.println(dog.getName());
     dog.speak();
-    dog.swarm();
+    System.out.println("---------------");
     System.out.println(cat.getName());
     cat.speak();
-    cat.noswarm();
+    cat.climbable();
 
   }
 }
@@ -19,7 +19,7 @@ public class AnimalEx {
 abstract class Animal {
   private String name;
   private int age;
-  abstract void speak();
+  abstract void speak(); //구현 강제
 
   public String getName() {return name;}
   public void setName(String name) {this.name = name;}
@@ -33,7 +33,7 @@ abstract class Animal {
   }
 }
 
-class Dog extends Animal implements Life {
+class Dog extends Animal  {
   public Dog(String name,int age) {
     super(name,age);
   }
@@ -41,13 +41,9 @@ class Dog extends Animal implements Life {
   public void speak() {
     System.out.println("멍멍");
   }
-  @Override
-  public void swarm(){
-    System.out.println("무리생활");
-  }
 }
 
-class Cat extends Animal implements Nolife {
+class Cat extends Animal implements Climb  {
   public Cat(String name,int age){
     super(name,age);
   }
@@ -55,15 +51,13 @@ class Cat extends Animal implements Nolife {
   public void speak(){
     System.out.println("야옹");
   }
-  public void noswarm(){
-    System.out.println("개인생활");
+
+  @Override
+  public void climbable() {
+    System.out.println("나무오르기");
   }
 }
 
-interface Life{
-  void swarm();
-}
-
-interface Nolife{
-  void noswarm();
+interface Climb{
+  void climbable();
 }

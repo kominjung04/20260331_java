@@ -19,11 +19,8 @@ class Birds {
 }
 
 
-class Elephants extends Mammals implements Groudable {
-}
-
-class Human extends Mammals implements Groudable {
-}
+class Elephants extends Mammals implements Groudable { }
+class Human extends Mammals implements Groudable { }
 
 class Bat extends Mammals implements Flyable {
   public void fly() {
