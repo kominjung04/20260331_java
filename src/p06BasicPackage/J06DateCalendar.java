@@ -1,5 +1,6 @@
 package p06BasicPackage;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -7,8 +8,10 @@ public class J06DateCalendar {
   public static void main(String[] args) {
     // Date     :: deprecated,  월(0), 불편/날짜 지정 어려움
     // Calendar :: 보통      ,  월(0), set()으로 날짜 지정
+    System.out.println("===DATE===");
     String week[] = {"일", "월", "화", "수", "목", "금", "토"};
     Date d1 = new Date();
+    d1 = new Date(126,3,15);//쓰지 말 것, 급 deprecated
     System.out.println(d1);
     System.out.println(d1.getYear()+1900);
     System.out.println(d1.getMonth()+1);
@@ -21,9 +24,17 @@ public class J06DateCalendar {
     System.out.println(getDate(d1));
     System.out.println(getTime(d1));
     System.out.println(getDate(d1)+ " "+getTime(d1));
+    SimpleDateFormat sdf =
+        new SimpleDateFormat("yyyy-MM-dd E a hh:mm:ss");
+    System.out.println(sdf.format(new Date()));
 
+    System.out.println("=====Calendar=====");
+    //월은 0 ~ 11까지
     Calendar c = Calendar.getInstance();
-    c.set(2025, 7, 1); // 날짜 지정 가능
+    c.set(2026, 3, 15); // 날짜 지정 가능
+    c.set(2026, 3, 15,10,30,20);
+    c.set(Calendar.MONTH,Calendar.DECEMBER);
+    c.set(Calendar.DAY_OF_MONTH,25);
     System.out.println(c.get(Calendar.YEAR));
     System.out.println(c.get(Calendar.MONTH)+1);
     System.out.println(c.get(Calendar.DATE));
