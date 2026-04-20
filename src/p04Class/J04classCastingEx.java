@@ -30,19 +30,32 @@ public class J04classCastingEx {
 //Tv,Computer,Audio (Name,Price)
 class Buyer {
   private int money = 1000;
-  public int getMoney() {return money;}
-  private int cnt =0;
+
+  public int getMoney() {
+    return money;
+  }
+
+  private int cnt = 0;
   private String[] list = new String[3];
 
-  public String[] getList() {return list;}
+  public String[] getList() {
+    return list;
+  }
 
-  void buy(Product p){//자 -> 부 (형변환)
-    if(money < p.getPrice()) System.out.println("구매 불가");
-    else{money -= p.getPrice();
+  void buy(Product p) {//자 -> 부 (형변환)
+    if (money < p.getPrice()) System.out.println("구매 불가");
+    else {
+      money -= p.getPrice();
       System.out.println("남은돈 : " + money);
       list[cnt++] = p.getName();
     }
   }
+
+//  public <T extends Product> void buy(T p) {
+//    money -= p.getPrice();
+//    System.out.println("남은돈 : " + money);
+//    list[cnt++] = p.getName();
+//  }
 //  void buy(Computer com){
 //    if(money < com.getPrice()) System.out.println("구매 불가");
 //    else {money -= com.getPrice();
@@ -76,32 +89,42 @@ class Buyer {
 
 }
 
-class Product{
+class Product {
   private String name;
   private int price;
 
   //getter,setter를 써서 접근할 수 있게 만들기
-  public String getName() {return name;}
-  public void setName(String name) {this.name = name;}
+  public String getName() {
+    return name;
+  }
 
-  public int getPrice() {return price;}
-  public void setPrice(int price) {this.price = price;}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-  public Product(String name, int price){
+  public int getPrice() {
+    return price;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
+  }
+
+  public Product(String name, int price) {
     this.name = name;
     this.price = price;
   }
 }
 
-class Tv extends Product{
-  public Tv(){
-  super("Tv",300);
+class Tv extends Product {
+  public Tv() {
+    super("Tv", 300);
   }
 //  String name = "Tv";
 //  int price = 300;
 }
 
-class Computer extends Product{
+class Computer extends Product {
   public Computer() {
     super("computer", 400);
   }
@@ -109,9 +132,9 @@ class Computer extends Product{
 //  int price = 400;
 }
 
-class Audio extends Product{
-  public Audio(){ //값이 class내에 설정
-  super("Audio",300);
+class Audio extends Product {
+  public Audio() { //값이 class내에 설정
+    super("Audio", 300);
   }
   //  String name = "Audio";
   //  int price = 300;
