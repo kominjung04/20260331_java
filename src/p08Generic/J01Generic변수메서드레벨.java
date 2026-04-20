@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Generic변수메서드레벨 {
+public class J01Generic변수메서드레벨 {
   //var value = 10; //var는 반드시 지역변수에서만 사용
   public static void main(String[] args) {
     // Generic 사용의 이점: 형 변환 생략 가능, 타입의 안정성 도모
