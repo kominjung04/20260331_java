@@ -18,6 +18,7 @@ public class J05HashSet {
     for(Object o: set) System.out.println(o);
     System.out.println();
     Iterator iset = set.iterator();
+
     while (iset.hasNext()){
       System.out.println(iset.next());
     }
