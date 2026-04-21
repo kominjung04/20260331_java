@@ -12,47 +12,63 @@ public class ExMain {
 //    System.out.println(i1.getNo());
     List<Item> list = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
-    list.add(new Item(Long.valueOf(i),"title"+i,"imgName","작성자",LocalDateTime.now(),LocalDateTime.now()));
+      list.add(new Item(Long.valueOf(i), "title" + i, "imgName", "작성자", LocalDateTime.now(), LocalDateTime.now()));
     }
     for (int i = 0; i < 10; i++) {
-    System.out.println(list.get(i));
+      System.out.println(list.get(i));
     }
 
     System.out.println();
 
     List<Writer> wlist = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
-    wlist.add(new Writer(i,"작성자"+i,"user"+i,1,LocalDateTime.now(),LocalDateTime.now()));
+      wlist.add(new Writer(i, "작성자" + i, "user" + i, 1, LocalDateTime.now(), LocalDateTime.now()));
     }
     for (int i = 0; i < 10; i++) {
-    System.out.println(wlist.get(i));
+      System.out.println(wlist.get(i));
     }
 
 
   }
 }
+//basic상속관계
+class Basic {
+  private LocalDateTime regDate;
+  private LocalDateTime movDate;
 
-class Item{
+  public Basic(LocalDateTime regDate, LocalDateTime movDate) {
+    this.regDate = regDate;
+    this.movDate = movDate;
+  }
+
+  public LocalDateTime getRegDate() {return regDate;}
+  public void setRegDate(LocalDateTime regDate) {this.regDate = regDate;}
+
+  public LocalDateTime getMovDate() {return movDate;}
+  public void setMovDate(LocalDateTime movDate) {this.movDate = movDate;}
+}
+
+
+class Item extends Basic{
   private Long no;
   private String title;
   private String imgName;
   private String writer;
-  private LocalDateTime regDate;
-  private LocalDateTime modDate;
 
   @Override
   public String toString() {
-    return String.format("%d / %s",no,title);
+    return String.format("%d / %s", no, title);
   }
 
-  public Item(Long no, String title, String imgName, String writer, LocalDateTime regDate, LocalDateTime modDate){
+
+  public Item (Long no, String title, String imgName, String writer, LocalDateTime regDate, LocalDateTime modDate) {
+    super(regDate,modDate);
     this.no = no;
     this.title = title;
     this.imgName = imgName;
     this.writer = writer;
-    this.regDate = regDate;
-    this.modDate = modDate;
   }
+
   public Long getNo() {return no;}
   public void setNo(Long no) {this.no = no;}
 
@@ -65,36 +81,29 @@ class Item{
   public String getWriter() {return writer;}
   public void setWriter(String writer) {this.writer = writer;}
 
-  public LocalDateTime getRegDate() {return regDate;}
-  public void setRegDate(LocalDateTime regDate) {this.regDate = regDate;}
-
-  public LocalDateTime getModDate() {return modDate;}
-  public void setModDate(LocalDateTime modDate) {this.modDate = modDate;}
 
 
 }
 
-class Writer{
+
+class Writer extends Basic{
   private int wno;
   private String name;
   private String id;
   private int pass;
-  LocalDateTime regDate;
-  LocalDateTime modDate;
+
 
   public Writer(int wno, String name, String id, int pass, LocalDateTime regDate, LocalDateTime modDate) {
+    super(regDate,modDate);
     this.wno = wno;
     this.name = name;
     this.id = id;
     this.pass = pass;
-    this.regDate = regDate;
-    this.modDate = modDate;
+
   }
 
   @Override
-  public String toString() {
-    return String.format("%d / %s / %s ",wno,name,id);
-  }
+  public String toString() {return String.format("%d / %s / %s ", wno, name, id);}
 
   public int getWno() {return wno;}
   public void setWno(int wno) {this.wno = wno;}
@@ -108,14 +117,49 @@ class Writer{
   public int getPass() {return pass;}
   public void setPass(int pass) {this.pass = pass;}
 
-  public LocalDateTime getRegDate() {return regDate;}
-  public void setRegDate(LocalDateTime regDate) {this.regDate = regDate;}
-
-  public LocalDateTime getModDate() {return modDate;}
-  public void setModDate(LocalDateTime modDate) {this.modDate = modDate;}
 }
 
-//product,purchase테이블 제작
-//basic상속관계
+
 //prduct :: pno,name.regDate,modDate
+class Prduct extends Basic {
+  private int pno;
+  private String name;
+
+  public Prduct(LocalDateTime regDate, LocalDateTime modDate, int pno, String name) {
+    super(regDate, modDate);
+    this.pno = pno;
+    this.name = name;
+  }
+
+  public int getPno() {return pno;}
+  public void setPno(int pno) {this.pno = pno;}
+
+  public String getName() {return name;}
+  public void setName(String name) {this.name = name;}
+}
+
+
 //purchase :: puno,wirter,name.regDate,modDate
+class Purchase extends Basic {
+  private int puno;
+  private String wirter;
+  private String name;
+
+
+  public Purchase(int puno, String wirter, String name, LocalDateTime regDate, LocalDateTime modDate) {
+    super(regDate, modDate);
+    this.puno = puno;
+    this.wirter = wirter;
+    this.name = name;
+
+  }
+
+  public int getPuno() {return puno;}
+  public void setPuno(int puno) {this.puno = puno;}
+
+  public String getWirter() {return wirter;}
+  public void setWirter(String wirter) {this.wirter = wirter;}
+
+  public String getName() {return name;}
+  public void setName(String name) {this.name = name;}
+}
