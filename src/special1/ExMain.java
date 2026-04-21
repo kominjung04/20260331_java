@@ -151,7 +151,6 @@ class Purchase extends Basic {
     this.puno = puno;
     this.wirter = wirter;
     this.name = name;
-
   }
 
   public int getPuno() {return puno;}
