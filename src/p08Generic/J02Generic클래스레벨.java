@@ -29,6 +29,7 @@ public class J02Generic클래스레벨 {
   }
 }
 
+// 1. 클래스 레벨 제네릭 사용 T::type
 class GenericEx<T> {
   T[] arr;
 
