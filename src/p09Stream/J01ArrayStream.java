@@ -58,7 +58,7 @@ public class J01ArrayStream {
     print(sortedArr);
   }
 
-  //출력 메소드
+  //중복된 출력 메소드
   static void print(String[] arr) {
     Arrays.stream(arr).forEach(s -> System.out.print(s + " "));
     System.out.println();
