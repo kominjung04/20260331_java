@@ -12,7 +12,7 @@ public class ExMain {
 //    i1.setNo(10l);
 //    System.out.println(i1.getNo());
     List<Item> list = new ArrayList<>();
-    System.out.println("======= Item 테이블 ======");
+    System.out.println("======= Item 테이블 :: 번호,제목,이미지,작성자,등록일,수정일======");
     for (int i = 0; i < 10; i++) {
       list.add(new Item(Long.valueOf(i), "title" + i, "imgName", "작성자", LocalDateTime.now(), LocalDateTime.now()));
     }
@@ -21,7 +21,7 @@ public class ExMain {
     }
     System.out.println();
 
-    System.out.println("======= Writer 테이블 ======");
+    System.out.println("======= Writer 테이블 :: 번호,작성자,아이디,비번======");
     List<Writer> wlist = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
       wlist.add(new Writer(i, "작성자" + i, "user" + i, "1", LocalDateTime.now(), LocalDateTime.now()));
@@ -32,20 +32,20 @@ public class ExMain {
     System.out.println();
 //product :: pno,name.regDate,modDate
 
-    System.out.println("======= Product 테이블 ======");
+    System.out.println("======= Product 테이블 :: 번호,상품명,상품갯수,등록일,수정일======");
     List<Product> pdlist = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
-      pdlist.add(new Product(i,"상품명"+i,LocalDateTime.now(),LocalDateTime.now()));
+      pdlist.add(new Product(i,"상품명"+i,i,LocalDateTime.now(),LocalDateTime.now()));
     }
     for (int i = 0; i < 10; i++) {
       System.out.println(pdlist.get(i));
     }
     System.out.println();
 
-    System.out.println("======= Purchase 테이블 ======");
+    System.out.println("======= Purchase 테이블 ::번호,작성자,구매상품갯수,등록일,수정일 ======");
     List<Purchase> prlist = new ArrayList<>();
     for (int i = 0; i < 10; i++) {
-      prlist.add(new Purchase(i,"작성자"+i,"상품명"+i,LocalDateTime.now(),LocalDateTime.now()));
+      prlist.add(new Purchase(i,"작성자"+i,"상품명"+i,i,LocalDateTime.now(),LocalDateTime.now()));
     }
     for (int i = 0; i < 10; i++) {
       System.out.println(prlist.get(i));
@@ -150,20 +150,22 @@ class Writer extends Basic{
 }
 
 
-//product :: pno,pname,regDate,modDate
+//product :: pno,pname,countpd,regDate,modDate
 class Product extends Basic {
   private int pno;
   private String pname;
+  private int countpd;
 
-  public Product( int pno, String pname,LocalDateTime regDate, LocalDateTime modDate) {
+  public Product( int pno, String pname,int countpd,LocalDateTime regDate, LocalDateTime modDate) {
     super(regDate, modDate);
     this.pno = pno;
     this.pname = pname;
+    this.countpd = countpd;
   }
 
   @Override
   public String toString() {
-    return String.format("%d / %s / %s ",pno,pname,super.toString());
+    return String.format("%d / %s / %d / %s ",pno,pname,countpd,super.toString());
   }
 
   public int getPno() {return pno;}
@@ -171,6 +173,9 @@ class Product extends Basic {
 
   public String getPname() {return pname;}
   public void setPname(String name) {this.pname = name;}
+
+  public int getCountpd(){return countpd;}
+  public void setCountpd(int countpd){this.countpd =countpd;}
 }
 
 
@@ -179,17 +184,19 @@ class Purchase extends Basic {
   private int puno;
   private String writer;
   private String name;
+  private int countpr;
 
   @Override
   public String toString() {
-    return String.format("%d/ %s / %s / %s",puno,writer,name,super.toString());
+    return String.format("%d/ %s / %s / %d /%s",puno,writer,name,countpr,super.toString());
   }
 
-  public Purchase(int puno, String writer, String name, LocalDateTime regDate, LocalDateTime modDate) {
+  public Purchase(int puno, String writer, String name,int countpr, LocalDateTime regDate, LocalDateTime modDate) {
     super(regDate, modDate);
     this.puno = puno;
     this.writer = writer;
     this.name = name;
+    this.countpr = countpr;
   }
 
   public int getPuno() {return puno;}
@@ -200,4 +207,7 @@ class Purchase extends Basic {
 
   public String getName() {return name;}
   public void setName(String name) {this.name = name;}
+
+  public int getCountpr() {return countpr;}
+  public void setCountpr(int countpr){this.countpr = countpr;}
 }
