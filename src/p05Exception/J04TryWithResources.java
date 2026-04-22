@@ -36,7 +36,7 @@ public class J04TryWithResources {
     ) {
       fis = new FileInputStream(filePath);
       int data = 0;
-      while ((data = isr.read()) != -1) {
+      while ((data = isr2.read()) != -1) {
         System.out.print((char) data);
       }
     } catch (FileNotFoundException e) {
