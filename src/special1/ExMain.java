@@ -42,17 +42,24 @@ public class ExMain {
     }
     System.out.println();
 
-    System.out.println("======= Purchase 테이블 ::번호,작성자,구매상품갯수,등록일,수정일 ======");
+    //purchase 리스트에 구매한 품목 테이블에 넣기
+    System.out.println("====구매 전과 후의 product테이블 변화====");
     List<Purchase> prlist = new ArrayList<>();
-    for (int i = 0; i < 10; i++) {
-      prlist.add(new Purchase(i,"작성자"+i,"상품명"+i,i,LocalDateTime.now(),LocalDateTime.now()));
-    }
-    for (int i = 0; i < 10; i++) {
+    System.out.println("구매 전 : " + pdlist.get(1));
+    System.out.println("구매 전 : " + pdlist.get(2));
+    Purchase p1 = pdlist.get(1).buy(1, wlist.get(1), 1);
+    Purchase p2 = pdlist.get(2).buy(2, wlist.get(1), 1);
+    prlist.add(p1);
+    prlist.add(p2);
+    System.out.println();
+    System.out.println("구매 후 : " + pdlist.get(1));
+    System.out.println("구매 후 : " + pdlist.get(2));
+
+    System.out.println();
+    System.out.println("====purchase테이블 출력====");
+    for (int i = 0; i < prlist.size(); i++) {
       System.out.println(prlist.get(i));
     }
-    System.out.println();
-
-
 
   }
 }
@@ -176,38 +183,44 @@ class Product extends Basic {
 
   public int getCountpd(){return countpd;}
   public void setCountpd(int countpd){this.countpd =countpd;}
+
+  public Purchase buy(int pno,Writer writer,int countpr){
+    this.countpd -= countpr;
+    return  new Purchase(pno, writer, this, countpr, LocalDateTime.now(), LocalDateTime.now());
+  }
 }
 
 
 //purchase :: puno,writer,name.regDate,modDate
 class Purchase extends Basic {
   private int puno;
-  private String writer;
-  private String name;
+  private Writer writer;
+  private Product product;
   private int countpr;
 
   @Override
   public String toString() {
-    return String.format("%d/ %s / %s / %d /%s",puno,writer,name,countpr,super.toString());
+    //객체 전체에서 필요한 값을 get으로 가져옴
+    return String.format("%d / %s / %s / %d / %s",puno, writer.getId(),product.getPname(),countpr,super.toString());
   }
 
-  public Purchase(int puno, String writer, String name,int countpr, LocalDateTime regDate, LocalDateTime modDate) {
+  public Purchase(int puno, Writer writer, Product product, int countpr,LocalDateTime regDate, LocalDateTime modDate) {
     super(regDate, modDate);
     this.puno = puno;
     this.writer = writer;
-    this.name = name;
+    this.product = product; //객체 전체를 받음
     this.countpr = countpr;
   }
 
   public int getPuno() {return puno;}
   public void setPuno(int puno) {this.puno = puno;}
 
-  public String getWriter() {return writer;}
-  public void setWriter(String writer) {this.writer = writer;}
+  public Writer getWriter() {return writer;}
+  public void setWriter(Writer writer) {this.writer = writer;}
 
-  public String getName() {return name;}
-  public void setName(String name) {this.name = name;}
+  public Product getProduct() {return product;}
+  public void setProduct(Product product) {this.product = product;}
 
   public int getCountpr() {return countpr;}
-  public void setCountpr(int countpr){this.countpr = countpr;}
+  public void setCountpr(int countpr) {this.countpr = countpr;}
 }
