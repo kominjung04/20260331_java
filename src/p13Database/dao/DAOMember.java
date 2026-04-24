@@ -121,8 +121,22 @@ public MemberVO getMember(Long mno) {
     return result;
   }
 
-  public Collection<MemberVO> getListMembers() {
-    ArrayList<MemberVO> result = null;
+  public List<MemberVO> getListMembers() {
+    List<MemberVO> result = new ArrayList<>();
+    try {
+      conn = getConn();
+      String sql = "select * from members order by mno ";
+      pstmt = conn.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+      while (rs.next()) {
+        MemberVO vo = new MemberVO(rs.getLong("mno"),
+            rs.getString("id"),rs.getString("pass"),
+            rs.getString("name"),rs.getString("mobile"));
+        result.add(vo);
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
 
     return result;
   }
