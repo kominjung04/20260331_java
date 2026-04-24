@@ -43,7 +43,7 @@ class MyChat extends JFrame{
 
   public MyChat() throws HeadlessException {
     //init
-    ip = JOptionPane.showInputDialog("Server IP","10.100.105.4");
+    ip = JOptionPane.showInputDialog("Server IP","10.100.105.28");
     if(ip.trim().equals("")) return;
     id = JOptionPane.showInputDialog("당신의 ID를 입력하세요");
     if(id.trim().equals("")) return;
