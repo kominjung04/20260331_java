@@ -141,13 +141,47 @@ public MemberVO getMember(Long mno) {
     return result;
   }
 
-  boolean modifyMembers() {
+  public boolean modifyMembers(MemberVO vo) {
     boolean result = false;
+    try {
+      conn = getConn();
+      String sql = "update memebers set pass=?,name=?,mobile=?, where id=?";
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, vo.getPass());
+      pstmt.setString(2, vo.getName());
+      pstmt.setString(3, vo.getMobile());
+      pstmt.setString(4, vo.getId());
+
+      int cnt = pstmt.executeUpdate();// DML: insert,update,delete
+      if (cnt == 1) result = true;
+
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }finally {
+      closeDB();
+    }
 
     return result;
   }
 
-  //deleteMembers(Long mno){}
+  boolean deleteMembers(Long mno){
+    boolean result = false;
+    try {
+      conn = getConn();
+      String sql = "delete from members where mno = ?";
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setLong(1, mno);
+
+      int cnt = pstmt.executeUpdate();
+      if (cnt == 1) result = true;
+
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    } finally {
+      closeDB();
+    }
+    return result;
+  }
 
 }
 
