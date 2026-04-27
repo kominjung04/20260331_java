@@ -94,11 +94,12 @@ public MemberVO getMember(Long mno) {
     return result;
   }
 
+  //회원등록 후 회원번호를 리턴하는 메서드
   public Long insertMembersMno(MemberVO vo) {
     Long result = -1l; //회원을 삽입하고 난 후 회원번호를 위한 변수
     try {
       conn = getConn();
-      MemberVO tmp = checkId(vo.getId());
+      MemberVO tmp = checkId(vo.getId()); //회원 존재 확인
 
       //회원 입력 전 중복 체크 하여 있으면 진행 불가, 여기서 return 마무리
       if (tmp.getId().equals(vo.getId())) return -1L; // 메서드 리턴타입 Long
