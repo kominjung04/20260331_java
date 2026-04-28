@@ -59,7 +59,7 @@ public class FrmLogin extends FrmBasic{
           MainController.getInstance().setSession(vo);
           new FrmMain(); dispose();
         }else{
-          JOptionPane.showMessageDialog(null,"계정을 확인해주세요");
+          JOptionPane.showMessageDialog(null,"ID,비밀번호가 올바르지 않습니다");
         }
       } else {
         JOptionPane.showMessageDialog(null,"ID를 확인하세요");

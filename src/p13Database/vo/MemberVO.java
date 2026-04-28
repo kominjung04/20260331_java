@@ -20,6 +20,7 @@ public class MemberVO {
     this.mobile = mobile;
   }
 
+
   public Long getMno() {return mno;}
   public void setMno(Long mno) {this.mno = mno;}
 

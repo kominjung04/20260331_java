@@ -2,6 +2,7 @@ package p13Database.dao;
 
 import p13Database.vo.MemberVO;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -64,7 +65,7 @@ public class DAOMember extends DAOSet {
 
       MemberVO tmp = checkId(vo.getId());// 회원 존재 확인
       // 회원 입력전 중복 체크하여 있으면 진행 불가. 여기서 return 마무리
-      if (tmp != null) return false; //메서드 리턴타입 boolean
+      if (tmp != null) return false;//메서드 리턴타입 boolean
 
       String sql = "insert into members(mno, id, pass, name, mobile) " +
           "values(sq_members.nextval, ?,?,?,?) ";
@@ -159,7 +160,7 @@ public class DAOMember extends DAOSet {
       return result;
   }
 
-  boolean deleteMember(Long mno) {
+  public boolean deleteMember(Long mno) {
     boolean result = false;
     try {
       conn = getConn();

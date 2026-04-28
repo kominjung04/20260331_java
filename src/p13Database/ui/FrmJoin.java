@@ -40,6 +40,14 @@ public class FrmJoin extends FrmBasic{
       String id = tfId.getText().trim();
       String pass = new String(pfPass.getPassword()).trim();
       String repass = new String(pfRePass.getPassword()).trim();
+      MemberVO vo = new MemberVO(
+          null,
+          tfId.getText().trim(),
+          new String(pfPass.getPassword()).trim(),
+          tfName.getText().trim(),
+          tfMobile.getText().trim()
+      );
+      boolean result = new DAOMember().insertMembers(vo);
 
       if (tfId.getText().trim().equals("")) {
         JOptionPane.showMessageDialog(null,"ID를 입력해주세요");
@@ -58,6 +66,13 @@ public class FrmJoin extends FrmBasic{
         pfRePass.requestFocus();
         return;
       }
+      if(result){
+        JOptionPane.showMessageDialog(null,"회원 가입 완료");
+      }else{
+        JOptionPane.showMessageDialog(null,"이미 존재하는 ID입니다.");
+        return;
+      }
+
       System.out.println(id + "/" + pass + "/" +repass);
 
       Long mno = new DAOMember().insertMembersMno(new MemberVO(

@@ -78,7 +78,6 @@ public class FrmModify extends FrmBasic{
         return;
       }
 
-      vo.setId(tfId.getText());
       vo.setPass(pass);
       vo.setName(tfName.getText());
       vo.setMobile(tfMobile.getText());
@@ -87,7 +86,9 @@ public class FrmModify extends FrmBasic{
 
       if(result){
         JOptionPane.showMessageDialog(null, "수정 완료");
+        FrmMain frmMain = (FrmMain) MainController.getInstance().getMap().get("frmMain"); //frm객체 가져오기
 
+        frmMain.setTableModel(new DAOMember().getListMembers()); //다시 테이블 생성
       } else {
         JOptionPane.showMessageDialog(null, "수정 실패");
       }

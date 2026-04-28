@@ -30,7 +30,7 @@ public class FrmMain extends FrmBasic{
     for (int i = 0; i < list.size(); i++) {
       MemberVO vo = list.get(i);
       model.addRow(new String[]{
-          vo.getMno()+"",vo.getName()+"",vo.getPass()+"",vo.getName()+"",
+          vo.getMno()+"",vo.getId()+"",vo.getPass()+"",vo.getName()+"",
           vo.getMobile()
       });
     }
@@ -76,9 +76,19 @@ public class FrmMain extends FrmBasic{
     });
     btnDelete.addActionListener(e->{
       //yse 버튼 클릭 시 daomember.delete이용
+      int selectedRow = tbl.getSelectedRow();
+      if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(null,"삭제할 회원번호를 먼저 선택하세요");
+        return;
+      }
+      int confirm = JOptionPane.showConfirmDialog(null,"삭제하시겠습니까?","삭제 완료",JOptionPane.YES_NO_OPTION);
+      if(confirm == JOptionPane.YES_OPTION){
+      Long mno = Long.parseLong(model.getValueAt(tbl.getSelectedRow(), 0).toString());
+      new DAOMember().deleteMember(mno);}
+      setTableModel(new DAOMember().getListMembers());
 
     });
-    btnClose.addActionListener(e->{dispose();});
+    btnClose.addActionListener(e->{new FrmLogin(); dispose();});
 
   }
 
